@@ -1,14 +1,12 @@
 package com.br.zup.concessionariacitroen.exceptions;
 
-import org.springframework.http.HttpStatus;
-
 public class ExcecaoBasica extends RuntimeException {
-    private HttpStatus status;
+    private int status;
     private String campo;
     private String motivo;
     private String tipoErro;
 
-    public ExcecaoBasica(String message, HttpStatus status, String campo, String motivo, String tipoErro) {
+    public ExcecaoBasica(String message, int status, String campo, String motivo, String tipoErro) {
         super(message);
         this.status = status;
         this.campo = campo;
@@ -16,8 +14,8 @@ public class ExcecaoBasica extends RuntimeException {
         this.tipoErro = tipoErro;
     }
 
-    public HttpStatus getStatus() { return status; }
-    public void setStatus(HttpStatus status) { this.status = status; }
+    public int getStatus() { return status; }
+    public void setStatus(int status) { this.status = status; }
 
     public String getCampo() { return campo; }
     public void setCampo(String campo) { this.campo = campo; }

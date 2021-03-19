@@ -1,16 +1,14 @@
 package com.br.zup.concessionariacitroen.exceptions;
 
-import org.springframework.http.HttpStatus;
-
 import java.util.List;
 
 public class RespostaErro {
     private String tipoErro;
     private int codigo;
-    private HttpStatus status;
+    private String status;
     private List<ObjetoErro> objetosDeErro;
 
-    public RespostaErro(String tipoErro, int codigo, HttpStatus status, List<ObjetoErro> objetosDeErro) {
+    public RespostaErro(String tipoErro, int codigo, String status, List<ObjetoErro> objetosDeErro) {
         this.tipoErro = tipoErro;
         this.codigo = codigo;
         this.status = status;
@@ -25,8 +23,8 @@ public class RespostaErro {
     public int getCodigo() { return codigo; }
     public void setCodigo(int codigo) { this.codigo = codigo; }
 
-    public HttpStatus getStatus() { return status; }
-    public void setStatus(HttpStatus status) { this.status = status; }
+    public String getStatus() { return status; }
+    public void setStatus(String status) { this.status = status; }
 
     public List<ObjetoErro> getObjetosDeErro() { return objetosDeErro; }
     public void setObjetosDeErro(List<ObjetoErro> objetosDeErro) {
