@@ -19,4 +19,13 @@ public class ServiceCliente {
     public List<Cliente> listarClientes() {
         return clientes;
     }
+
+    public Cliente pesquisarClientePeloCPF(String cpf){
+        for (Cliente objetoCliente : clientes){
+            if (objetoCliente.getCpf().equals(cpf)){
+                return objetoCliente;
+            }
+        }
+        throw new RuntimeException("Cliente não encontrado");
+    }
 }
