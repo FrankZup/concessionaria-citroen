@@ -47,7 +47,7 @@ public class ManipuladorExcecao extends ResponseEntityExceptionHandler {
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public RespostaErro manipularRuntimeException(ExcecaoBasica erro){
         ObjetoErro objetoDeErro = new ObjetoErro(erro.getMessage(), erro.getCampo());
-        RespostaErro respostaDeErro = new RespostaErro(erro.getTipoErro(), erro.getStatus(),
+        RespostaErro respostaDeErro = new RespostaErro(erro.getMessage(), erro.getStatus(),
                                                        erro.getMotivo(),   Arrays.asList(objetoDeErro));
 
         return respostaDeErro;
