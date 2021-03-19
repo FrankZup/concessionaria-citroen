@@ -14,13 +14,12 @@ public class ServiceCliente {
     private static List<Cliente> clientes = new ArrayList<>();
 
     public Cliente cadastrarCliente(Cliente cliente) {
-
-        if ( !clientes.contains(cliente)) {
-
+        try {
+            pesquisarCliente(cliente);
+        } catch (Exception exception){
             clientes.add(cliente);
             return cliente;
-        }
-        throw new ClienteDuplicadoException();
+        } throw new ClienteDuplicadoException();
     }
 
     public List<Cliente> listarClientes() {
@@ -34,5 +33,9 @@ public class ServiceCliente {
             }
         }
         throw new ClienteNaoEncontradoException();
+    }
+
+    public Cliente pesquisarCliente(Cliente cliente) {
+        return pesquisarClientePeloCPF(cliente.getCpf());
     }
 }

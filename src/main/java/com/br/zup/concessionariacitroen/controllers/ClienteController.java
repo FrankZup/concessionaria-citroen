@@ -16,7 +16,7 @@ public class ClienteController {
     @Autowired
     ServiceCliente serviceCliente;
 
-    @PutMapping
+    @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public Cliente cadastrarCliente(@RequestBody @Valid Cliente cliente) {
         return serviceCliente.cadastrarCliente(cliente);
