@@ -12,8 +12,13 @@ public class ServiceCliente {
     private static List<Cliente> clientes = new ArrayList<>();
 
     public Cliente cadastrarCliente(Cliente cliente) {
-        clientes.add(cliente);
-        return cliente;
+
+        if ( !clientes.contains(cliente)) {
+
+            clientes.add(cliente);
+            return cliente;
+        }
+        throw new RuntimeException("Cliente com CPF "+cliente.getCpf() + " já existe");
     }
 
     public List<Cliente> listarClientes() {
