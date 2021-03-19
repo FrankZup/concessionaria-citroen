@@ -1,6 +1,7 @@
 package com.br.zup.concessionariacitroen.services;
 
-import com.br.zup.concessionariacitroen.exceptions.CPFDuplicadoException;
+import com.br.zup.concessionariacitroen.exceptions.ClienteDuplicadoException;
+import com.br.zup.concessionariacitroen.exceptions.ClienteNaoEncontradoException;
 import com.br.zup.concessionariacitroen.models.Cliente;
 import org.springframework.stereotype.Service;
 
@@ -19,7 +20,7 @@ public class ServiceCliente {
             clientes.add(cliente);
             return cliente;
         }
-        throw new CPFDuplicadoException();
+        throw new ClienteDuplicadoException();
     }
 
     public List<Cliente> listarClientes() {
@@ -32,6 +33,6 @@ public class ServiceCliente {
                 return objetoCliente;
             }
         }
-        throw new RuntimeException("Cliente não encontrado");
+        throw new ClienteNaoEncontradoException();
     }
 }
