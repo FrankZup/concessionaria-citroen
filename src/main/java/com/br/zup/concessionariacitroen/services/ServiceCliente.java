@@ -1,5 +1,6 @@
 package com.br.zup.concessionariacitroen.services;
 
+import com.br.zup.concessionariacitroen.exceptions.CPFDuplicadoException;
 import com.br.zup.concessionariacitroen.models.Cliente;
 import org.springframework.stereotype.Service;
 
@@ -18,7 +19,7 @@ public class ServiceCliente {
             clientes.add(cliente);
             return cliente;
         }
-        throw new RuntimeException("Cliente com CPF "+cliente.getCpf() + " já existe");
+        throw new CPFDuplicadoException();
     }
 
     public List<Cliente> listarClientes() {
