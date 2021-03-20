@@ -27,6 +27,7 @@ public class ClienteController {
         return serviceCliente.pesquisarClientePeloCPF(cpf);
     }
 
+    @GetMapping
     public List<Cliente> listarClientes(){
         return serviceCliente.listarClientes();
     }
