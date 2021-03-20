@@ -1,5 +1,7 @@
 package com.br.zup.concessionariacitroen.controllers;
 
+import com.br.zup.concessionariacitroen.enums.Modelo;
+
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
