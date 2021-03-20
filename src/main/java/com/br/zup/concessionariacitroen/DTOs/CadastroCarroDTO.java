@@ -10,6 +10,7 @@ public class CadastroCarroDTO {
     private Transmissao transmissao;
     private Rodas rodas;
     private TipoCarro tipoCarro;
+    private short quantidade;
 
     CadastroCarroDTO() {}
 
@@ -61,6 +62,14 @@ public class CadastroCarroDTO {
         this.tipoCarro = tipoCarro;
     }
 
+    public short getQuantidade() {
+        return quantidade;
+    }
+
+    public void setQuantidade(short quantidade) {
+        this.quantidade = quantidade;
+    }
+
     public Carro converterDTOParaCarro(){
         Carro carro = new Carro();
         carro.setModelo(this.modelo);
@@ -69,6 +78,7 @@ public class CadastroCarroDTO {
         carro.setMotor(this.motor);
         carro.setTransmissao(this.transmissao);
         carro.setRodas(this.rodas);
+        carro.setQuantidade(this.quantidade);
 
         return carro;
     }
