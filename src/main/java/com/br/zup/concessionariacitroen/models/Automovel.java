@@ -1,4 +1,4 @@
-package com.br.zup.concessionariacitroen.controllers;
+package com.br.zup.concessionariacitroen.models;
 
 import com.br.zup.concessionariacitroen.enums.*;
 
