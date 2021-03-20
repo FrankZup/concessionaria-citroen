@@ -22,7 +22,6 @@ public class CarroController {
     @ResponseStatus(HttpStatus.CREATED)
     public Carro cadastrarCarro(@RequestBody @Valid CadastroCarroDTO cadastroCarroDTO){
         return carroService.cadastrarCarro(cadastroCarroDTO.converterDTOParaCarro());
-
     }
 
     @GetMapping

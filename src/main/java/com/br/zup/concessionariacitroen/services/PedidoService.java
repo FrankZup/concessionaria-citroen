@@ -31,13 +31,13 @@ public class PedidoService {
     /**
      *Método que permite visualizar todos os pedidos cadastrados
      **/
-    public List<Pedido> listarPedidos() {
+    public List<Pedido> listarTodosPedidos() {
         return pedidos;
     }
     /**
      *Método que permite pesquisar o pedido pelo número do pedido
      **/
-    public Pedido pesquisarPedidoPeloNumero(int numeroPedido) {
+    public Pedido pesquisarPedidoPeloNumero(long numeroPedido) {
         for (Pedido pedido : pedidos) {
             if (pedido.getNumeroPedido() == numeroPedido) {
                 return pedido;

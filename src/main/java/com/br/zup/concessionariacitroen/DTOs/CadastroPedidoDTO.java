@@ -40,10 +40,12 @@ public class CadastroPedidoDTO {
 
     public Pedido converterDTOParaPedido(){
         Pedido pedido = new Pedido();
+        long numeroPedido = pedido.getNumeroPedido();
+        pedido.setNumeroPedido(+numeroPedido);
         pedido.setCliente(this.cliente);
         pedido.setCarro(this.carro);
         pedido.setTipoPagamento(this.tipoPagamento);
-        pedido.setDataCompra(LocalDate.now());
+        //pedido.setDataCompra(LocalDate.now());
 
         return pedido;
     }

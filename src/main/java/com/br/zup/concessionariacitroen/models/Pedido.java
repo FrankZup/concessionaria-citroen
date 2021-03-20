@@ -6,24 +6,20 @@ import java.time.LocalDate;
 import java.util.Objects;
 
 public class Pedido {
-    private int numeroPedido = 1000;
+    private long numeroPedido;
     private Carro carro;
     private Cliente cliente;
-    private LocalDate dataCompra;
+   // private LocalDate dataCompra;
     private TipoPagamento tipoPagamento;
 
     public Pedido() {}
 
-    public Pedido(Carro carro, Cliente cliente, TipoPagamento tipoPagamento) {
-        this.numeroPedido += numeroPedido;
-        this.carro = carro;
-        this.cliente = cliente;
-        this.dataCompra = LocalDate.now();
-        this.tipoPagamento = tipoPagamento;
+    public long getNumeroPedido() {
+        return numeroPedido;
     }
 
-    public int getNumeroPedido() {
-        return numeroPedido;
+    public void setNumeroPedido(long numeroPedido) {
+        this.numeroPedido = numeroPedido;
     }
 
     public Carro getCarro() {
@@ -41,7 +37,7 @@ public class Pedido {
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
     }
-
+/*
     public LocalDate getDataCompra() {
         return dataCompra;
     }
@@ -49,7 +45,7 @@ public class Pedido {
     public void setDataCompra(LocalDate dataCompra) {
         this.dataCompra = dataCompra;
     }
-
+*/
     public TipoPagamento getTipoPagamento() {
         return tipoPagamento;
     }
