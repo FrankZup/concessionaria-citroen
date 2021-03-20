@@ -1,5 +1,7 @@
 package com.br.zup.concessionariacitroen.models;
 
+import com.br.zup.concessionariacitroen.enums.TipoPagamento;
+
 import java.time.LocalDate;
 import java.util.Objects;
 
