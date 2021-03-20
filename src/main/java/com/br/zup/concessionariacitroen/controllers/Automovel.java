@@ -1,5 +1,6 @@
 package com.br.zup.concessionariacitroen.controllers;
 
+import com.br.zup.concessionariacitroen.enums.Cor;
 import com.br.zup.concessionariacitroen.enums.Modelo;
 
 import javax.validation.constraints.NotEmpty;
@@ -14,7 +15,7 @@ public abstract class Automovel {
 
     @NotNull
     @NotEmpty
-    private Cores cor;
+    private Cor cor;
 
     @NotNull
     @NotEmpty
