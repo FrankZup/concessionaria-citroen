@@ -3,7 +3,6 @@ package com.br.zup.concessionariacitroen.controllers;
 
 import com.br.zup.concessionariacitroen.DTOs.CadastroCarroDTO;
 import com.br.zup.concessionariacitroen.enums.Modelo;
-import com.br.zup.concessionariacitroen.exceptions.CarroNaoEncontradoException;
 import com.br.zup.concessionariacitroen.models.Carro;
 import com.br.zup.concessionariacitroen.services.CarroService;
 import org.springframework.beans.factory.annotation.Autowired;
