@@ -3,6 +3,7 @@ package com.br.zup.concessionariacitroen.services;
 import com.br.zup.concessionariacitroen.enums.Modelo;
 import com.br.zup.concessionariacitroen.exceptions.CarroDuplicadoException;
 import com.br.zup.concessionariacitroen.exceptions.CarroNaoEncontradoException;
+import com.br.zup.concessionariacitroen.exceptions.EstoqueVazioException;
 import com.br.zup.concessionariacitroen.models.Carro;
 import org.springframework.stereotype.Service;
 
@@ -41,5 +42,10 @@ public class CarroService {
         return carro;
     }
 
-
+    public List<Carro> listarTodosCarrosEmEstoque() {
+        if(carros.isEmpty()) {
+            throw new EstoqueVazioException();
+        }
+        return carros;
+    }
 }

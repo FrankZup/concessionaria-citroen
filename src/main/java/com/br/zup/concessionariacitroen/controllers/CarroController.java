@@ -9,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @RestController
 @RequestMapping("carros/")
@@ -21,5 +22,10 @@ public class CarroController {
     public Carro cadastrarCarro(@RequestBody @Valid CadastroCarroDTO cadastroCarroDTO){
         return carroService.cadastrarCarro(cadastroCarroDTO.converterDTOParaCarro());
 
+    }
+
+    @GetMapping
+    public List<Carro> listarTodosCarrosEmEstoque(){
+        return carroService.listarTodosCarrosEmEstoque();
     }
 }
