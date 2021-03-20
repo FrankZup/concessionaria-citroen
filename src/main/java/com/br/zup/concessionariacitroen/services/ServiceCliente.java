@@ -1,7 +1,9 @@
 package com.br.zup.concessionariacitroen.services;
 
+import com.br.zup.concessionariacitroen.exceptions.CarroDuplicadoException;
 import com.br.zup.concessionariacitroen.exceptions.ClienteDuplicadoException;
 import com.br.zup.concessionariacitroen.exceptions.ClienteNaoEncontradoException;
+import com.br.zup.concessionariacitroen.models.Carro;
 import com.br.zup.concessionariacitroen.models.Cliente;
 import org.springframework.stereotype.Service;
 
@@ -14,12 +16,20 @@ public class ServiceCliente {
     private static List<Cliente> clientes = new ArrayList<>();
 
     public Cliente cadastrarCliente(Cliente cliente) {
-        try {
-            pesquisarCliente(cliente);
-        } catch (Exception exception){
+        if (!verificarClienteExiste(cliente)) {
             clientes.add(cliente);
-            return cliente;
-        } throw new ClienteDuplicadoException();
+        }
+
+        return cliente;
+    }
+
+    public boolean verificarClienteExiste(Cliente cliente){
+        for (Cliente objetoCliente : clientes){
+            if (objetoCliente.getCpf().equals(cliente.getCpf())){
+                throw new ClienteDuplicadoException();
+            }
+        }
+        return false;
     }
 
     public List<Cliente> listarClientes() {
@@ -33,9 +43,5 @@ public class ServiceCliente {
             }
         }
         throw new ClienteNaoEncontradoException();
-    }
-
-    public Cliente pesquisarCliente(Cliente cliente) {
-        return pesquisarClientePeloCPF(cliente.getCpf());
     }
 }
