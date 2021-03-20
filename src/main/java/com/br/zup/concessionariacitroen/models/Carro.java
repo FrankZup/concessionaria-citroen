@@ -10,7 +10,7 @@ public class Carro extends Automovel{
     @NotEmpty
     private TipoCarro tipoCarro;
 
-    Carro() {
+    public Carro() {
     }
 
     public TipoCarro getTipoCarro() {
