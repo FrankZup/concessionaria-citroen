@@ -27,14 +27,16 @@ public class CarroService {
     }
 
     public boolean verificarSeCarroExiste(Carro carro) {
-        if(pesquisarCarro(carro) != null) {
-            throw new CarroDuplicadoException();
+        for(Carro carroIndex : carros) {
+            if(carroIndex.getModelo().equals(carro.getModelo())) {
+                throw new CarroDuplicadoException();
+            }
         }
-        return true;
+        return false;
     }
 
     public Carro cadastrarCarro(Carro carro) {
-        verificarSeCarroExiste(carro);
+        if(!verificarSeCarroExiste(carro));
         carros.add(carro);
         return carro;
     }
