@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class ServiceCliente {
+public class ClienteService {
 
     private static List<Cliente> clientes = new ArrayList<>();
 

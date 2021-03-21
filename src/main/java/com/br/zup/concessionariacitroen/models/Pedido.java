@@ -9,7 +9,7 @@ public class Pedido {
     private long numeroPedido;
     private Carro carro;
     private Cliente cliente;
-   // private LocalDate dataCompra;
+    private LocalDate dataCompra;
     private TipoPagamento tipoPagamento;
 
     public Pedido() {}
@@ -37,7 +37,7 @@ public class Pedido {
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
     }
-/*
+
     public LocalDate getDataCompra() {
         return dataCompra;
     }
@@ -45,7 +45,7 @@ public class Pedido {
     public void setDataCompra(LocalDate dataCompra) {
         this.dataCompra = dataCompra;
     }
-*/
+
     public TipoPagamento getTipoPagamento() {
         return tipoPagamento;
     }

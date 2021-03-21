@@ -1,5 +1,6 @@
 package com.br.zup.concessionariacitroen.DTOs;
 
+import com.br.zup.concessionariacitroen.enums.Modelo;
 import com.br.zup.concessionariacitroen.enums.TipoPagamento;
 import com.br.zup.concessionariacitroen.models.Carro;
 import com.br.zup.concessionariacitroen.models.Cliente;
@@ -8,26 +9,26 @@ import com.br.zup.concessionariacitroen.models.Pedido;
 import java.time.LocalDate;
 
 public class CadastroPedidoDTO {
-    private Carro carro;
-    private Cliente cliente;
+    private Modelo modeloCarro;
+    private String cpfCliente;
     private TipoPagamento tipoPagamento;
 
     CadastroPedidoDTO() {}
 
-    public Carro getCarro() {
-        return carro;
+    public Modelo getModeloCarro() {
+        return modeloCarro;
     }
 
-    public void setCarro(Carro carro) {
-        this.carro = carro;
+    public void setModeloCarro(Modelo modeloCarro) {
+        this.modeloCarro = modeloCarro;
     }
 
-    public Cliente getCliente() {
-        return cliente;
+    public String getCpfCliente() {
+        return cpfCliente;
     }
 
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
+    public void setCpfCliente(String cpfCliente) {
+        this.cpfCliente = cpfCliente;
     }
 
     public TipoPagamento getTipoPagamento() {
@@ -38,15 +39,24 @@ public class CadastroPedidoDTO {
         this.tipoPagamento = tipoPagamento;
     }
 
-    public Pedido converterDTOParaPedido(){
+    public Pedido converterDTOParaPedido(Carro carro, Cliente cliente){
         Pedido pedido = new Pedido();
         long numeroPedido = pedido.getNumeroPedido();
         pedido.setNumeroPedido(+numeroPedido);
-        pedido.setCliente(this.cliente);
-        pedido.setCarro(this.carro);
+        pedido.setCliente(cliente);
+        pedido.setCarro(carro);
         pedido.setTipoPagamento(this.tipoPagamento);
-        //pedido.setDataCompra(LocalDate.now());
+        pedido.setDataCompra(LocalDate.now());
 
         return pedido;
+    }
+
+    @Override
+    public String toString() {
+        return "CadastroPedidoDTO{" +
+                "modeloCarro=" + modeloCarro +
+                ", cpfCliente='" + cpfCliente + '\'' +
+                ", tipoPagamento=" + tipoPagamento +
+                '}';
     }
 }

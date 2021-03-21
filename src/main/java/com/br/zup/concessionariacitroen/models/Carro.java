@@ -36,4 +36,12 @@ public class Carro extends Automovel{
     public void setTipoCarro(TipoCarro tipoCarro) {
         this.tipoCarro = tipoCarro;
     }
+
+    @Override
+    public String toString() {
+        return "Carro{" +
+                "tipoCarro=" + tipoCarro +
+                ", quantidade=" + quantidade +
+                '}';
+    }
 }

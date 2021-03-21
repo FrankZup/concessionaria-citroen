@@ -1,7 +1,7 @@
 package com.br.zup.concessionariacitroen.controllers;
 
 import com.br.zup.concessionariacitroen.models.Cliente;
-import com.br.zup.concessionariacitroen.services.ServiceCliente;
+import com.br.zup.concessionariacitroen.services.ClienteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -14,7 +14,7 @@ import java.util.List;
 public class ClienteController {
 
     @Autowired
-    ServiceCliente serviceCliente;
+    ClienteService serviceCliente;
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
