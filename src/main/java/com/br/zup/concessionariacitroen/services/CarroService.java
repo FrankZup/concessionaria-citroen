@@ -36,16 +36,23 @@ public class CarroService {
         return false;
     }
 
+    public List<Carro> listarTodosCarrosEmEstoque() {
+        if(carros.isEmpty()) {
+            throw new EstoqueVazioException();
+        }
+        return carros;
+    }
+
     public Carro cadastrarCarro(Carro carro) {
         if(!verificarSeCarroExiste(carro));
         carros.add(carro);
         return carro;
     }
 
-    public List<Carro> listarTodosCarrosEmEstoque() {
-        if(carros.isEmpty()) {
-            throw new EstoqueVazioException();
-        }
-        return carros;
+    public boolean removerCarroDoEstoque(Carro carro) {
+        verificarSeCarroExiste(carro);
+        carros.remove(carro);
+
+        return true;
     }
 }
