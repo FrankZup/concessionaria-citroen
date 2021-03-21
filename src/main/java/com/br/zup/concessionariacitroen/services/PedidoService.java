@@ -23,6 +23,7 @@ public class PedidoService {
      **/
 
     public Pedido cadastrarPedido(Pedido pedido) {
+        pedido.setNumeroPedido(numeroPedidoAtual() + 1);
         pedidos.add(pedido);
         carroService.efetuarBaixaDoEstoque(pedido.getCarro(), pedido.getQuantidade());
 
@@ -44,5 +45,14 @@ public class PedidoService {
             }
         }
         throw new PedidoNaoEncontradoException();
+    }
+
+    private long numeroPedidoAtual() {
+        long numeroPedidoAtual;
+        if(pedidos.size() == 0L) {
+            return numeroPedidoAtual = 1000L;
+        }
+        numeroPedidoAtual = pedidos.get(pedidos.size () - 1).getNumeroPedido();
+        return numeroPedidoAtual;
     }
 }

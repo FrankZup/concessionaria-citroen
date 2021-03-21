@@ -51,7 +51,7 @@ public class CadastroPedidoDTO {
     public Pedido converterDTOParaPedido(Carro carro, Cliente cliente){
         Pedido pedido = new Pedido();
         long numeroPedido = pedido.getNumeroPedido();
-        pedido.setNumeroPedido(+numeroPedido);
+        pedido.setNumeroPedido(numeroPedido);
         pedido.setCliente(cliente);
         pedido.setCarro(carro);
         pedido.setTipoPagamento(this.tipoPagamento);
