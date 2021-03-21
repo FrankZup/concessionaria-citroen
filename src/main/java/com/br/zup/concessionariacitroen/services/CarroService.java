@@ -55,4 +55,12 @@ public class CarroService {
 
         return true;
     }
+
+    public boolean efetuarBaixaDoEstoque(Carro carro, int quantidade) {
+        if (carro.getQuantidade() > 0) {
+            carro.setQuantidade(carro.getQuantidade() - quantidade);
+            return true;
+        }
+        throw new EstoqueVazioException();
+    }
 }

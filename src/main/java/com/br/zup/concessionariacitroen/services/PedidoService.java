@@ -24,8 +24,7 @@ public class PedidoService {
 
     public Pedido cadastrarPedido(Pedido pedido) {
         pedidos.add(pedido);
-        //Carro carro = pedido.getCarro();
-        //carroService.removerCarroDoEstoque(carro);
+        carroService.efetuarBaixaDoEstoque(pedido.getCarro(), pedido.getQuantidade());
 
         return pedido;
     }

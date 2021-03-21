@@ -31,12 +31,15 @@ public class PedidoController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Pedido cadastrarPedido(@RequestBody @Valid CadastroPedidoDTO cadastroPedidoDTO) {
+    public String cadastrarPedido(@RequestBody @Valid CadastroPedidoDTO cadastroPedidoDTO) {
         Carro carro = carroService.pesquisarCarroPeloModelo(cadastroPedidoDTO.getModeloCarro());
-        System.out.println(carro);
         Cliente cliente = clienteService.pesquisarClientePeloCPF(cadastroPedidoDTO.getCpfCliente());
-        System.out.println(cliente);
-        return servicePedido.cadastrarPedido(cadastroPedidoDTO.converterDTOParaPedido(carro, cliente));
+        Pedido pedido = servicePedido.cadastrarPedido(cadastroPedidoDTO.converterDTOParaPedido(carro, cliente));
+        String pedidoToString = pedido.toString();
+        /**
+         *  ATENÇÃO: Falta converter a String para Json, e retornar um Json ao invés de String
+         */
+        return pedidoToString;
     }
 
     @GetMapping("{numeroPedido}/")

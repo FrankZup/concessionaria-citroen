@@ -6,7 +6,6 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 public abstract class Automovel {
-    private final String MARCA = "Citroen";
 
     @NotNull
     @NotEmpty

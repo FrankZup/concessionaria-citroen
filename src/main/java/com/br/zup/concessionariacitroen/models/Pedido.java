@@ -11,7 +11,7 @@ public class Pedido {
     private Cliente cliente;
     private LocalDate dataCompra;
     private TipoPagamento tipoPagamento;
-    private short quantidade;
+    private int quantidade;
 
     public Pedido() {}
 
@@ -55,11 +55,11 @@ public class Pedido {
         this.tipoPagamento = tipoPagamento;
     }
 
-    public short getQuantidade() {
+    public int getQuantidade() {
         return quantidade;
     }
 
-    public void setQuantidade(short quantidade) {
+    public void setQuantidade(int quantidade) {
         this.quantidade = quantidade;
     }
 
@@ -74,5 +74,31 @@ public class Pedido {
     @Override
     public int hashCode() {
         return Objects.hash(numeroPedido);
+    }
+
+    @Override
+    public String toString() {
+        return "Pedido{" +
+                "numeroPedido=" + numeroPedido +
+                "Cliente{" +
+                "nome='" + cliente.getNome() + '\'' +
+                ", cpf='" + cliente.getCpf() + '\'' +
+                ", email='" + cliente.getEmail() + '\'' +
+                ", telefone='" + cliente.getTelefone() + '\'' +
+                ", endereco='" + cliente.getEndereco() + '\'' +
+                '}' +
+                "Carro{" +
+                "tipoCarro=" + carro.getTipoCarro() +
+                "MARCA='" + carro.getMARCA() + '\'' +
+                ", modelo=" + carro.getModelo() +
+                ", cor=" + carro.getCor() +
+                ", motor=" + carro.getMotor() +
+                ", transmissao=" + carro.getTransmissao() +
+                ", rodas=" + carro.getRodas() +
+                '}' +
+                ", dataCompra=" + dataCompra +
+                ", tipoPagamento=" + tipoPagamento +
+                ", quantidade=" + quantidade +
+                '}';
     }
 }

@@ -12,6 +12,7 @@ public class CadastroPedidoDTO {
     private Modelo modeloCarro;
     private String cpfCliente;
     private TipoPagamento tipoPagamento;
+    private int quantidade;
 
     CadastroPedidoDTO() {}
 
@@ -39,6 +40,14 @@ public class CadastroPedidoDTO {
         this.tipoPagamento = tipoPagamento;
     }
 
+    public int getQuantidade() {
+        return quantidade;
+    }
+
+    public void setQuantidade(int quantidade) {
+        this.quantidade = quantidade;
+    }
+
     public Pedido converterDTOParaPedido(Carro carro, Cliente cliente){
         Pedido pedido = new Pedido();
         long numeroPedido = pedido.getNumeroPedido();
@@ -46,17 +55,9 @@ public class CadastroPedidoDTO {
         pedido.setCliente(cliente);
         pedido.setCarro(carro);
         pedido.setTipoPagamento(this.tipoPagamento);
+        pedido.setQuantidade(this.quantidade);
         pedido.setDataCompra(LocalDate.now());
 
         return pedido;
-    }
-
-    @Override
-    public String toString() {
-        return "CadastroPedidoDTO{" +
-                "modeloCarro=" + modeloCarro +
-                ", cpfCliente='" + cpfCliente + '\'' +
-                ", tipoPagamento=" + tipoPagamento +
-                '}';
     }
 }
