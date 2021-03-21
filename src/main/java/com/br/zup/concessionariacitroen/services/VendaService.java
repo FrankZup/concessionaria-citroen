@@ -1,6 +1,8 @@
 package com.br.zup.concessionariacitroen.services;
 
 import com.br.zup.concessionariacitroen.exceptions.NaoHaVendasCadastradasException;
+import com.br.zup.concessionariacitroen.exceptions.VendaDuplicadaException;
+import com.br.zup.concessionariacitroen.models.Carro;
 import com.br.zup.concessionariacitroen.models.Venda;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,12 +23,10 @@ public class VendaService {
      **/
 
     public Venda efetuarVenda(Venda venda){
-        for(Venda vendaIndex : vendas) {
-            if(vendaIndex.equals(venda)) {
-                return vendaIndex;
-            }
-        }
-        throw new RuntimeException();
+        verificarSeHaVendaPeloNumero(venda.getNumeroVenda());
+        vendas.add(venda);
+
+        return venda;
     }
     /**
      *Método que permite visualizar todas as vendas realizadas
@@ -64,5 +64,14 @@ public class VendaService {
         if (vendas.isEmpty() || vendas == null){
             throw new NaoHaVendasCadastradasException();
         }
+    }
+
+    public boolean verificarSeHaVendaPeloNumero(long numeroVenda) {
+        for(Venda venda : vendas) {
+            if(venda.getNumeroVenda() == numeroVenda) {
+                throw new VendaDuplicadaException();
+            }
+        }
+        return false;
     }
 }
