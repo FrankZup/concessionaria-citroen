@@ -1,5 +1,6 @@
 package com.br.zup.concessionariacitroen.controllers;
 
+import com.br.zup.concessionariacitroen.DTOs.CadastroClienteDTO;
 import com.br.zup.concessionariacitroen.models.Cliente;
 import com.br.zup.concessionariacitroen.services.ClienteService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,8 +19,8 @@ public class ClienteController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Cliente cadastrarCliente(@RequestBody @Valid Cliente cliente) {
-        return serviceCliente.cadastrarCliente(cliente);
+    public Cliente cadastrarCliente(@RequestBody @Valid CadastroClienteDTO cadastroClienteDTO) {
+        return serviceCliente.cadastrarCliente(cadastroClienteDTO.converterDTOParaCliente());
     }
 
     @GetMapping("{cpf}/")

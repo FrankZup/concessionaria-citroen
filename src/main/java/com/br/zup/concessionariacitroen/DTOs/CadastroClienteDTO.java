@@ -1,14 +1,13 @@
-package com.br.zup.concessionariacitroen.models;
+package com.br.zup.concessionariacitroen.DTOs;
 
+import com.br.zup.concessionariacitroen.models.Carro;
+import com.br.zup.concessionariacitroen.models.Cliente;
 import org.hibernate.validator.constraints.br.CPF;
 
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
 import java.time.LocalDate;
 
-public class Cliente {
+public class CadastroClienteDTO {
     @NotEmpty(message = "Nome não pode estar vazio")
     @NotNull(message = "Nome não pode ser nulo")
     @Size(min = 3, message = "Quantidade mínima de caractéres 3")
@@ -23,16 +22,14 @@ public class Cliente {
     @NotEmpty(message = "Telefone não pode estar vazio")
     @NotNull(message = "Telefone não pode ser nulo")
     @Size(min =10, message = "Quantidade mínima de caractéres 10 DDD+número")
+    @NotBlank(message = "Não é permitido cadastrar espaços em branco")
     private String telefone;
 
     @NotEmpty(message = "Endereço não pode estar vazio")
     @NotNull(message = "Endereço não pode ser nulo")
+    @NotBlank(message = "Não é permitido cadastrar espaços em branco")
     @Size(min = 3, message = "Quantidade mínima de caractéres 3")
     private String endereco;
-
-    private LocalDate dataCadastro;
-
-    public Cliente() {}
 
     public String getNome() { return nome; }
     public void setNome(String nome) { this.nome = nome; }
@@ -49,19 +46,15 @@ public class Cliente {
     public String getEndereco() { return endereco; }
     public void setEndereco(String endereco) { this.endereco = endereco; }
 
+    public Cliente converterDTOParaCliente() {
+        Cliente cliente = new Cliente();
+        cliente.setNome(this.nome);
+        cliente.setCpf(this.cpf);
+        cliente.setEmail(this.email);
+        cliente.setTelefone(this.telefone);
+        cliente.setEndereco(this.endereco);
+        cliente.setDataCadastro(LocalDate.now());
 
-    @Override
-    public String toString() {
-        return "Cliente{" +
-                "nome='" + nome + '\'' +
-                ", cpf='" + cpf + '\'' +
-                ", email='" + email + '\'' +
-                ", telefone='" + telefone + '\'' +
-                ", endereco='" + endereco + '\'' +
-                '}';
+        return cliente;
     }
-
-    public LocalDate getDataCadastro() { return dataCadastro; }
-    public void setDataCadastro(LocalDate dataCadastro) { this.dataCadastro = dataCadastro; }
-
 }
