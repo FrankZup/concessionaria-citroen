@@ -1,8 +1,10 @@
 package com.br.zup.concessionariacitroen.services;
 
 import com.br.zup.concessionariacitroen.exceptions.PedidoNaoEncontradoException;
+import com.br.zup.concessionariacitroen.exceptions.VendaDuplicadaException;
 import com.br.zup.concessionariacitroen.models.Carro;
 import com.br.zup.concessionariacitroen.models.Pedido;
+import com.br.zup.concessionariacitroen.models.Venda;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,10 +23,9 @@ public class PedidoService {
      **/
 
     public Pedido cadastrarPedido(Pedido pedido) {
+        pedido.setNumeroPedido(numeroPedidoAtual() + 1);
         pedidos.add(pedido);
-
-        Carro carro = pedido.getCarro();
-        carroService.removerCarroDoEstoque(carro);
+        carroService.efetuarBaixaDoEstoque(pedido.getCarro(), pedido.getQuantidade());
 
         return pedido;
     }
@@ -44,5 +45,14 @@ public class PedidoService {
             }
         }
         throw new PedidoNaoEncontradoException();
+    }
+
+    private long numeroPedidoAtual() {
+        long numeroPedidoAtual;
+        if(pedidos.size() == 0L) {
+            return numeroPedidoAtual = 1000L;
+        }
+        numeroPedidoAtual = pedidos.get(pedidos.size () - 1).getNumeroPedido();
+        return numeroPedidoAtual;
     }
 }

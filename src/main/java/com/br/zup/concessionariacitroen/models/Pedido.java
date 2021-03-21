@@ -9,8 +9,9 @@ public class Pedido {
     private long numeroPedido;
     private Carro carro;
     private Cliente cliente;
-   // private LocalDate dataCompra;
+    private LocalDate dataCompra;
     private TipoPagamento tipoPagamento;
+    private int quantidade;
 
     public Pedido() {}
 
@@ -37,7 +38,7 @@ public class Pedido {
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
     }
-/*
+
     public LocalDate getDataCompra() {
         return dataCompra;
     }
@@ -45,13 +46,21 @@ public class Pedido {
     public void setDataCompra(LocalDate dataCompra) {
         this.dataCompra = dataCompra;
     }
-*/
+
     public TipoPagamento getTipoPagamento() {
         return tipoPagamento;
     }
 
     public void setTipoPagamento(TipoPagamento tipoPagamento) {
         this.tipoPagamento = tipoPagamento;
+    }
+
+    public int getQuantidade() {
+        return quantidade;
+    }
+
+    public void setQuantidade(int quantidade) {
+        this.quantidade = quantidade;
     }
 
     @Override
@@ -65,5 +74,31 @@ public class Pedido {
     @Override
     public int hashCode() {
         return Objects.hash(numeroPedido);
+    }
+
+    @Override
+    public String toString() {
+        return "Pedido{" +
+                "numeroPedido=" + numeroPedido +
+                "Cliente{" +
+                "nome='" + cliente.getNome() + '\'' +
+                ", cpf='" + cliente.getCpf() + '\'' +
+                ", email='" + cliente.getEmail() + '\'' +
+                ", telefone='" + cliente.getTelefone() + '\'' +
+                ", endereco='" + cliente.getEndereco() + '\'' +
+                '}' +
+                "Carro{" +
+                "tipoCarro=" + carro.getTipoCarro() +
+                "MARCA='" + carro.getMARCA() + '\'' +
+                ", modelo=" + carro.getModelo() +
+                ", cor=" + carro.getCor() +
+                ", motor=" + carro.getMotor() +
+                ", transmissao=" + carro.getTransmissao() +
+                ", rodas=" + carro.getRodas() +
+                '}' +
+                ", dataCompra=" + dataCompra +
+                ", tipoPagamento=" + tipoPagamento +
+                ", quantidade=" + quantidade +
+                '}';
     }
 }
