@@ -34,6 +34,15 @@ public class VendaService {
     public List<Venda> listarVendas(){
         return vendas;
     }
+
+    public Venda pesquisarVendaPeloNumeroDaVenda(long numeroVenda) {
+        for (Venda objetoVenda : vendas){
+            if (objetoVenda.getNumeroVenda() == numeroVenda) {
+                return objetoVenda;
+            }
+        }
+        throw new NaoHaVendasCadastradasException();
+    }
     /**
      *Método que permite pesquisar venda pelo cpf do cliente
      **/
