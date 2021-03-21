@@ -11,6 +11,7 @@ public class Pedido {
     private Cliente cliente;
     private LocalDate dataCompra;
     private TipoPagamento tipoPagamento;
+    private short quantidade;
 
     public Pedido() {}
 
@@ -52,6 +53,14 @@ public class Pedido {
 
     public void setTipoPagamento(TipoPagamento tipoPagamento) {
         this.tipoPagamento = tipoPagamento;
+    }
+
+    public short getQuantidade() {
+        return quantidade;
+    }
+
+    public void setQuantidade(short quantidade) {
+        this.quantidade = quantidade;
     }
 
     @Override
