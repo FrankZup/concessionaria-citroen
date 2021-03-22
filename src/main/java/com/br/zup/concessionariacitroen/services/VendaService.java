@@ -23,7 +23,8 @@ public class VendaService {
      **/
 
     public Venda efetuarVenda(Venda venda){
-        verificarSeHaVendaPeloNumero(venda.getNumeroVenda());
+        verificarSeHaVendaPeloNumeroPedido(venda.getPedido().getNumeroPedido());
+        venda.setNumeroVenda(numeroVendaAtual() + 1);
         vendas.add(venda);
 
         return venda;
@@ -66,12 +67,21 @@ public class VendaService {
         }
     }
 
-    public boolean verificarSeHaVendaPeloNumero(long numeroVenda) {
+    public boolean verificarSeHaVendaPeloNumeroPedido(long numeroPedido) {
         for(Venda venda : vendas) {
-            if(venda.getNumeroVenda() == numeroVenda) {
+            if(venda.getPedido().getNumeroPedido() == numeroPedido) {
                 throw new VendaDuplicadaException();
             }
         }
         return false;
+    }
+
+    private long numeroVendaAtual() {
+        long numeroVendaAtual;
+        if(vendas.size() == 0) {
+            return numeroVendaAtual = 500L;
+        }
+        numeroVendaAtual = vendas.get(vendas.size () - 1).getNumeroVenda();
+        return numeroVendaAtual;
     }
 }

@@ -49,7 +49,7 @@ public class PedidoService {
 
     private long numeroPedidoAtual() {
         long numeroPedidoAtual;
-        if(pedidos.size() == 0L) {
+        if(pedidos.size() == 0) {
             return numeroPedidoAtual = 1000L;
         }
         numeroPedidoAtual = pedidos.get(pedidos.size () - 1).getNumeroPedido();

@@ -3,7 +3,7 @@ package com.br.zup.concessionariacitroen.models;
 import java.time.LocalDate;
 
 public class Venda{
-    private long numeroVenda = 500L;
+    private long numeroVenda;
     private Pedido pedido;
     private LocalDate dataVenda;
 
